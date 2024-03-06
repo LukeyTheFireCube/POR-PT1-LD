@@ -1,16 +1,32 @@
+import math
+import os
 class Grid:
     def __init__(self, grid_size):
         self.grid_size = grid_size
 
     def get_grid(self):
-        a_row = [" "] * self.grid_size
-        the_grid = a_row * self.grid_size
+        the_grid = [" "] * self.grid_size * self.grid_size
         return the_grid
-    def print_board(self, board):
+
+    @staticmethod
+    def print_board(board):
+        row = ""
+        row_split = ""
+        count = 0
+        count2 = 0
         for i in board:
-            row = ""
-            for j in i:
-                row += j + " | "
-            print(row)
-            print("---------")
+            count += 1
+            count2 += 1
+            if count == math.sqrt(len(board)):
+                row += i
+                print(row)
+                row = ""
+                row_split += "-"
+                count = 0
+                if not count2 == len(board):
+                    print(row_split)
+                    row_split = ""
+            else:
+                row += i + " | "
+                row_split += "----"
         print()
