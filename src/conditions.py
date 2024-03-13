@@ -7,6 +7,7 @@ class Conditions:
         self.p2 = p2
 
     def check_conditions(self):
+        condition = ""
         # Check for win
         win_conditions = self.get_win_conditions()
         for wc in win_conditions:
@@ -19,13 +20,15 @@ class Conditions:
                     tick2 += 1
             if tick1 == math.sqrt(len(self.board)):
                 print("Player", self.p1, "wins!")
-                exit(0)
+                condition = "P1 Win"
             elif tick2 == math.sqrt(len(self.board)):
                 print("Player", self.p2, "wins!")
-                exit(0)
-            elif self.empty not in self.board:
-                print("It's a tie!")
-                exit(0)
+                condition = "P2 Win"
+        if self.empty not in self.board:
+            print("It's a tie!")
+            condition = "Tie"
+
+        return condition
 
     def get_win_conditions(self):
         repeater = int(math.sqrt(len(self.board)))

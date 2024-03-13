@@ -1,6 +1,7 @@
 import unittest
-from ..src.conditions import Conditions
-from ..src.grid import Grid
+
+from src.conditions import Conditions
+from src.grid import Grid
 
 
 
@@ -23,7 +24,7 @@ class Tests(unittest.TestCase):
         board[4] = p2
         board[6] = p2
 
-        self.assertIn([board[2], board[5], board[8]], wc)
+        self.assertEqual([board[2], board[5], board[8]], ["X", "X", "X"])
 
 if __name__ == "__main__":
     unittest.main()
