@@ -7,14 +7,14 @@ class Conditions:
 
     def check_conditions(self):
         condition = ""
-        # Check for win
+        # Check if anyone has won
         win_conditions = self.get_win_conditions(len(self.board[0]))
         for wc in win_conditions:
             symbols = [self.board[i[0]][i[1]] for i in wc]
-            if all(symbol == 'X' for symbol in symbols):
+            if all(symbol == self.p1 for symbol in symbols):
                 print("Player", self.p1, "wins!")
                 condition = "P1 Win"
-            elif all(symbol == 'O' for symbol in symbols):
+            elif all(symbol == self.p2 for symbol in symbols):
                 print("Player", self.p2, "wins!")
                 condition = "P2 Win"
 
